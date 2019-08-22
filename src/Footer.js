@@ -7,10 +7,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const useStyles = makeStyles({
-  root: {
-    width: 500,
-  },
-});
+    root: {
+      bottom: 0,
+      left: 0,
+      position: 'fixed',
+      width: '100%'
+    }
+  });
 
 export default function SimpleBottomNavigation() {
   const classes = useStyles();
@@ -19,11 +22,11 @@ export default function SimpleBottomNavigation() {
   return (
     <BottomNavigation
       value={value}
+      className={classes.root}
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
       showLabels
-      className={classes.root}
     >
       <BottomNavigationAction label="Просмотренные" icon={<RestoreIcon />} />
       <BottomNavigationAction label="Популярные" icon={<FavoriteIcon />} />

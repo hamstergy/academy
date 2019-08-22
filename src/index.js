@@ -1,6 +1,6 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
+import { hydrate,render } from 'react-dom';
 // import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -11,7 +11,7 @@ import theme from './theme';
 
 const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
-    render(
+    hydrate(
     <ThemeProvider theme={theme}>
     <CssBaseline />
     <App />

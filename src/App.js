@@ -17,23 +17,18 @@ function Copyright() {
     </Typography>
   );
 }
-function Header() {
-  return (
-    <div></div>
-  );
-}
 
 
 function App() {
   return (
-    <Container maxWidth="lm">
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
+    <Container maxWidth="md">
+      <Box my={4} align="center">
+        <Typography variant="h4" component="h1" gutterBottom align="center">
           Курсы английского языка в Алматы
         </Typography>
         <Courses />
         <Footer />
-        <Copyright />
+        {/* <Copyright /> */}
       </Box>
     </Container>
   );
