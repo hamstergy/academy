@@ -8,6 +8,7 @@ import StarIcon from '@material-ui/icons/Star';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import PhoneIcon from '@material-ui/icons/Phone';
+import json from './courses.json';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,16 +25,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function Courses() {
   const classes = useStyles();
-  const starElements = [{title: 'Образовательный центр РОСТ', desc: 'Сейфуллина, Абая',phone: '+77776292521'},{ title: 'Allin Education', desc: 'Маркова 22/37',phone: '+77776292521'},{title:'GM study - учебный центр', desc: 'ул. Маркова, 43',phone: '+77776292521'},{title:'GM study - учебный центр', desc: 'ул. Маркова, 43',phone: '+77776292521'}];
+  const data = json;
   const elements = [{title: 'Образовательный центр РОСТ', desc: 'Сейфуллина, Абая',phone: '+77776292521'},{ title: 'Allin Education', desc: 'Маркова 22/37',phone: '+77776292521'},{title:'GM study - учебный центр', desc: 'ул. Маркова, 43'},{title:'GM study - учебный центр', desc: 'ул. Маркова, 43',phone: '+77776292521'}];
-
-  const starItems = starElements.map((item, key) =>
+  const starItems = data.map((item, key) =>
     <ListItem key={key} button>
     <ListItemIcon>
       <StarIcon />
     </ListItemIcon>
-    <ListItemText primary={item.title} 
-                  secondary={item.desc}/>
+    <ListItemText primary={item.name} 
+                  secondary={item.contacts[0].streetName}/>
     <ListItemSecondaryAction>
       <IconButton edge="end" href={'tel:'+ item.phone}>
         <PhoneIcon />

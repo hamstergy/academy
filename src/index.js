@@ -1,28 +1,40 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import { hydrate,render } from 'react-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 // import './index.css';
 import App from './App';
+import Near from './Near';
+import Featured from './Featured';
 import * as serviceWorker from './serviceWorker';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './theme';
+import Footer from './Footer';
+import Geo from './Geo';
 
 
 const rootElement = document.getElementById("root");
-if (rootElement.hasChildNodes()) {
-    hydrate(
+const routing = (
+  
+  <Router>
+    <div>
+      <Geo />
     <ThemeProvider theme={theme}>
     <CssBaseline />
-    <App />
+      <Footer />
+      <Route exact path="/" component={App} />
+      <Route path="/near" component={Near} />
+      <Route path="/featured" component={Featured} />
     </ThemeProvider>
+    </div>
+  </Router>
+)
+if (rootElement.hasChildNodes()) {
+    hydrate(routing
   , rootElement);
 } else {
-  render(
-    <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <App />
-    </ThemeProvider>
+  render(routing
   , rootElement);
 }
 
