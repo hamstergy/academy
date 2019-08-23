@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -13,15 +12,11 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-
-
-
-
 class Near extends React.Component{
   state = {
     data : json,
-    lat: 0,
-    lon: 0,
+    lat: 43.242615699999995,
+    lon: 76.83689439999999,
   }
   
   componentDidMount() {
@@ -35,8 +30,8 @@ class Near extends React.Component{
     const renderList = () => {
       const test = []
       for (var item in data) {
-        if (data[item].contacts[0].latitude < parseFloat(lat) + 0.0001 && data[item].contacts[0].latitude < parseFloat(lat) + 0.0001 &&
-           data[item].contacts[0].longitude < parseFloat(lon) + 0.0001 && data[item].contacts[0].longitude < parseFloat(lon) + 0.0001){
+        if (data[item].contacts[0].latitude < parseFloat(lat) + 0.008 && data[item].contacts[0].latitude > parseFloat(lat) - 0.008 &&
+           data[item].contacts[0].longitude < parseFloat(lon) + 0.008 && data[item].contacts[0].longitude > parseFloat(lon) - 0.008){
             test.push(data[item]);
         }
       }
@@ -56,30 +51,24 @@ class Near extends React.Component{
       </ListItemSecondaryAction>
       </ListItem>
     );
-    const useStyles = makeStyles(theme => ({
+    const useStyles = {
       root: {
-        margin: theme.spacing(6, 0, 3),
+        margin: 'spacing(6, 0, 3)',
         maxWidth: 560,
         paddingBottom: 80
-      },
-      lightBulb: {
-        verticalAlign: 'middle',
-        marginRight: theme.spacing(1)
       }
-    }));
+    };
   return (
-    
     <Container maxWidth="md">
-      
-    <Box my={4} align="center">
-      <Typography variant="h4" component="h1" gutterBottom align="center">
-        Курсы английского языка поблизости
-      </Typography>
-      <List component="nav" className={useStyles.root} aria-label="contacts">
-        {starItems}
-      </List>
-    </Box>
-  </Container>
+      <Box my={4} align="center">
+        <Typography variant="h4" component="h1" gutterBottom align="center">
+          Курсы английского языка поблизости
+        </Typography>
+        <List component="nav" style={useStyles.root} aria-label="contacts">
+          {starItems}
+        </List>
+      </Box>
+    </Container>
   );
   }
 }
